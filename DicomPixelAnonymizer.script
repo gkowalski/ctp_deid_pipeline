@@ -1,305 +1,1097 @@
-Burned-in Annotation Library
+DicomPixelAnonymiser.script developed by the Medical College of Wisconsin
 
-This DicomPixelAnonymizer script file contains known regions in certain modality 
-images where PHI has been found to be present. This script has been compiled from
-the contributions of many users. Additional contributions are welcome.
+{
+   Manufacturer.containsIgnoreCase("ACUSON") 
+  * ManufacturerModelName.containsIgnoreCase("SEQUOIA") 
+  * !(ImageType.contains("SECONDARY") + ImageType.contains("DERIVED")) 
+  * Columns.equals("480") *  Rows.equals("640") 
 
-Important note: It is the responsibility of the user to review DICOM images to be 
-sure that all areas of PHI are removed from an image before it is considered
-anonymized.  If you have additional filetypes and signatures to add to this list,
-please send them to johnperry@dls.net.
+}  ( 0,25,0,247)
 
-For information on the DicomPixelAnonymizer and the format of this file,see:
-	http://mircwiki.rsna.org/index.php?title=The_CTP_DICOM_Pixel_Anonymizer
+{
+   Manufacturer.containsIgnoreCase("R2 Technology, Inc.") 
+  * ManufacturerModelName.containsIgnoreCase("Cenova") 
+  * !(ImageType.contains("SECONDARY") + ImageType.contains("DERIVED")) 
+  * Columns.equals("958") *  Rows.equals("800") 
 
+}  ( 0,220,0,550)
 
-**************
-     CT
-**************
-GE 
+{
+   Manufacturer.containsIgnoreCase("R2 Technology, Inc.") 
+  * ManufacturerModelName.containsIgnoreCase("Cenova") 
+  * !(ImageType.contains("SECONDARY") + ImageType.contains("DERIVED")) 
+  * Columns.equals("800") *  Rows.equals("958") 
 
- CT Dose Series
-  { CodeMeaning.containsIgnoreCase("IEC Body Dosimetry Phantom") }
-  (0,0,512,200)
+}  ( 0,220,0,550)
 
-  { SeriesDescription.containsIgnoreCase("Dose Report") }
-  (0,0,512,110)
+{
+   Manufacturer.containsIgnoreCase("Siemens Medical Systems - Ultrasound Division") 
+  * ManufacturerModelName.containsIgnoreCase("Antares") 
+  * !(ImageType.contains("SECONDARY") + ImageType.contains("DERIVED")) 
+  * Columns.equals("1024") *  Rows.equals("768") 
 
-  { Manufacturer.containsIgnoreCase("GE MEDICAL") *
-    CommentsOnRadiationDose.containsIgnoreCase("DLP") }
-  (0,0,512,110)
+}  ( 0,60,0,600)
 
- AW Workstation
+{
+   Manufacturer.containsIgnoreCase("Philips Medical Systems") 
+  * ManufacturerModelName.containsIgnoreCase("iU22") 
+  * !(ImageType.contains("SECONDARY") + ImageType.contains("DERIVED")) 
+  * Columns.equals("600") *  Rows.equals("800") 
 
-  { BurnedInAnnotation.containsIgnoreCase("YES") * 
-    Manufacturer.containsIgnoreCase("GE MEDICAL") *
-    SeriesDescription.containsIgnoreCase("AW electronic film") }
-  (0,0,512,80)
+}  ( 0,60,0,400)
 
- 512 x 512 screen captures
-  { BurnedInAnnotation.containsIgnoreCase("YES") * 
-    Manufacturer.containsIgnoreCase("GE MEDICAL") *
-    Rows.equals("512") }
-  (0,0,512,25)
+{
+   Manufacturer.containsIgnoreCase("Philips Medical Systems") 
+  * ManufacturerModelName.containsIgnoreCase("iU22") 
+  * !(ImageType.contains("SECONDARY") + ImageType.contains("DERIVED")) 
+  * Columns.equals("1024") *  Rows.equals("768") 
 
- 512 x 512 screen captures - Vessel analysis
-  { BurnedInAnnotation.containsIgnoreCase("YES") * 
-    Manufacturer.containsIgnoreCase("GE MEDICAL") *
-    SeriesDescription.containsIgnoreCase("AVA Report") *
-    Rows.equals("512") }
-  (0,0,200,250)
+}  ( 0,60,0,768)
 
- 512 x 512 screen captures - Volume Rendering - MRCP
-  { ImageType.containsIgnoreCase("VOLREN") *
-    Rows.equals("512") *
-    Columns.equals("512") }
-   (350,0,162,30) (390,80,122,15)
+{
+   Manufacturer.containsIgnoreCase("Philips Medical Systems") 
+  * ManufacturerModelName.containsIgnoreCase("iU22") 
+  * !(ImageType.contains("SECONDARY") + ImageType.contains("DERIVED")) 
+  * Columns.equals("768") *  Rows.equals("1024") 
 
- 1024 x 1024 screen captures
-  { BurnedInAnnotation.containsIgnoreCase("YES") * 
-    Manufacturer.containsIgnoreCase("GE MEDICAL") *
-    Rows.equals("1024") }
-  (0,0,300,150)   (724,0,300,150)
+}  ( 0,60,0,400)
 
-VITREA
+{
+   Manufacturer.containsIgnoreCase("Philips Medical Systems") 
+  * ManufacturerModelName.containsIgnoreCase("iU22") 
+  * !(ImageType.contains("SECONDARY") + ImageType.contains("DERIVED")) 
+  * Columns.equals("600") *  Rows.equals("91") 
 
- Stent Planning Worksheet
-  { Manufacturer.containsIgnoreCase("VITAL Images") *
-    ( SeriesDescription.containsIgnoreCase("AAA") + SeriesDescription.containsIgnoreCase("Report") ) *
-    Rows.equals("1041") }
-  (0,0,795,150)
+}  ( 0,60,0,90)
 
-SIEMENS
+{
+   Manufacturer.containsIgnoreCase("Philips Medical Systems") 
+  * ManufacturerModelName.containsIgnoreCase("EPIQ 7G") 
+  * !(ImageType.contains("SECONDARY") + ImageType.contains("DERIVED")) 
+  * Columns.equals("1024") *  Rows.equals("768") 
 
-  CT Dose Series - This removes PHI from Top of Dose image but rest of image is all white. Window Width and Center need to be set correctly.
-  { ImageType.containsIgnoreCase("SECONDARY") * 
-    Modality.containsIgnoreCase("CT") * 
-    Manufacturer.containsIgnoreCase("SIEMENS") * 
-    Rows.equals("860") }
-  (0,0,1132,60)
+}  ( 0,25,0,550)
 
-PHILIPS
+{
+   Manufacturer.containsIgnoreCase("Philips Medical Systems") 
+  * ManufacturerModelName.containsIgnoreCase("EPIQ 7G") 
+  * !(ImageType.contains("SECONDARY") + ImageType.contains("DERIVED")) 
+  * Columns.equals("768") *  Rows.equals("1024") 
 
-  { Manufacturer.containsIgnoreCase("PHILIPS") *
-    ImageType.containsIgnoreCase("DOSE") }
-  (0,0,512,135)
+}  ( 0,25,0,550)
 
-Toshiba Aquilion One CT Dose Series
-  { Modality.equals("CT") *
-    Manufacturer.containsIgnoreCase("TOSHIBA") *
-    ManufacturerModelName.containsIgnoreCase("Aquilion ONE") *
-    ImageType.containsIgnoreCase("SECONDARY") *
-    Columns.equals("512") *
-    Rows.equals("512") *
-    WindowWidth.equals("1") }
-  (0,0,410,240)
+{
+   Manufacturer.containsIgnoreCase("Philips Medical Systems") 
+  * ManufacturerModelName.containsIgnoreCase("EPIQ 7C") 
+  * !(ImageType.contains("SECONDARY") + ImageType.contains("DERIVED")) 
+  * Columns.equals("600") *  Rows.equals("800") 
 
-**************
-     PET/CT
-**************
-SIEMENS 
-  This is an overlay
-  { [6000,0022].containsIgnoreCase("Siemens MedCom Object Graphics") }
-  (0,0,512,90)
+}  ( 0,17,0,800)
 
-Philips
-  { Modality.equals("PT") *
-    [0008,0070].containsIgnoreCase("Philips Medical Systems") *
-    [0008,1090].containsIgnoreCase("GEMINI") *
-    [0028,0010].equals("446") *
-    [0028,0011].equals("245") }
-  (0,0,125,50)
+{
+   Manufacturer.containsIgnoreCase("Philips Medical Systems") 
+  * ManufacturerModelName.containsIgnoreCase("EPIQ 7C") 
+  * !(ImageType.contains("SECONDARY") + ImageType.contains("DERIVED")) 
+  * Columns.equals("825") *  Rows.equals("1036") 
 
-  { Modality.equals("PT") *
-    [0008,0070].containsIgnoreCase("Philips Medical Systems") *
-    [0008,1090].containsIgnoreCase("GEMINI") *
-    [0028,0010].equals("445") *
-    [0028,0011].equals("493") }
-  (0,0,140,55)
+}  ( 0,25,0,800)
 
-  { Modality.equals("PT") *
-    [0008,0070].containsIgnoreCase("Philips Medical Systems") *
-    [0008,1090].containsIgnoreCase("GEMINI") *
-    [0028,0010].equals("373") *
-    [0028,0011].equals("492") }
-  (0,0,100,25)
+{
+   Manufacturer.containsIgnoreCase("Philips Medical Systems") 
+  * ManufacturerModelName.containsIgnoreCase("EPIQ 7C") 
+  * !(ImageType.contains("SECONDARY") + ImageType.contains("DERIVED")) 
+  * Columns.equals("768") *  Rows.equals("1024") 
 
-**************
-     US
-**************
-GE 
- Logiq US
-  { ManufacturerModelName.containsIgnoreCase("LOGIQ9") }
-  (0,0,640,40)
+}  ( 0,25,0,800)
 
-  { ManufacturerModelName.containsIgnoreCase("LOGIQE9") }
-  (0,0,960,70)
+{
+   Manufacturer.containsIgnoreCase("Philips Medical Systems") 
+  * ManufacturerModelName.containsIgnoreCase("EPIQ 7C") 
+  * !(ImageType.contains("SECONDARY") + ImageType.contains("DERIVED")) 
+  * Columns.equals("576") *  Rows.equals("1024") 
 
-  { ManufacturerModelName.containsIgnoreCase("V830") }
-  (0,0,960,70)
+}  ( 0,25,0,800)
 
+{
+   Manufacturer.containsIgnoreCase("Philips Medical Systems") 
+  * ManufacturerModelName.containsIgnoreCase("EPIQ 7C") 
+  * !(ImageType.contains("SECONDARY") + ImageType.contains("DERIVED")) 
+  * Columns.equals("1080") *  Rows.equals("1920") 
 
-Philips 
- IU22
-  { ManufacturerModelName.containsIgnoreCase("iU22") *
-    Rows.equals("480") }
-  (0,0,640,47)
+}  ( 0,25,0,800)
 
- IU22
-  { ManufacturerModelName.containsIgnoreCase("iU22") *
-    Rows.equals("768") }
-  (0,0,1024,75)
+{
+   Manufacturer.containsIgnoreCase("Philips Medical Systems") 
+  * ManufacturerModelName.containsIgnoreCase("CX50") 
+  * !(ImageType.contains("SECONDARY") + ImageType.contains("DERIVED")) 
+  * Columns.equals("600") *  Rows.equals("800") 
 
+}  ( 0,55,0,800)
 
- IU22
-  { ManufacturerModelName.containsIgnoreCase("iU22") *
-    Rows.equals("600") }
-  (0,0,800,59)
+{
+   Manufacturer.containsIgnoreCase("Philips Medical Systems") 
+  * ManufacturerModelName.containsIgnoreCase("iE33") 
+  * !(ImageType.contains("SECONDARY") + ImageType.contains("DERIVED")) 
+  * Columns.equals("600") *  Rows.equals("800") 
 
- EPIQ 7G
-  { ManufacturerModelName.containsIgnoreCase("EPIQ") *
-    Rows.equals("600") }
-  (0,0,1024,49)
+}  ( 0,75,0,800)
 
- EPIQ 7G
-  { ManufacturerModelName.containsIgnoreCase("EPIQ") *
-    Rows.equals("768") }
-  (0,0,1024,49)
+{
+   Manufacturer.containsIgnoreCase("Philips Medical Systems") 
+  * ManufacturerModelName.containsIgnoreCase("iE33") 
+  * !(ImageType.contains("SECONDARY") + ImageType.contains("DERIVED")) 
+  * Columns.equals("768") *  Rows.equals("1024") 
 
-  CX50
-   { ManufacturerModelName.containsIgnoreCase("CX50") *
-    Rows.equals("600") }
-  (0,0,800,59)
+}  ( 0,75,0,1024)
 
-Zonare
-  { ManufacturerModelName.containsIgnoreCase("Z_ONE") }
-  (0,0,800,65)
-  
-ATL
-  { Modality.equals("US") *
-    Manufacturer.containsIgnoreCase("ATL") *
-    ManufacturerModelName.containsIgnoreCase("HDI 5000") *
-    Rows.equals("476") *
-    Columns.equals("640") }
-  (40,0,200,40) (240,0,190,16)
-  
-Siemens
-{ Modality.equals("US") *
-    Manufacturer.containsIgnoreCase("SIEMENS") *
-    ManufacturerModelName.containsIgnoreCase("SC2000") *
-    ImageType.containsIgnoreCase("SECONDARY") *
-    Rows.equals("768") *
-    Columns.equals("1024") }
-  (230,50,260,370)
+{
+   Manufacturer.containsIgnoreCase("Philips Medical Systems") 
+  * ManufacturerModelName.containsIgnoreCase("iE33") 
+  * !(ImageType.contains("SECONDARY") + ImageType.contains("DERIVED")) 
+  * Columns.equals("400") *  Rows.equals("400") 
 
-{ Modality.equals("US") *
-    Manufacturer.containsIgnoreCase("SIEMENS") *
-    ManufacturerModelName.containsIgnoreCase("ANTARES") *
-    Rows.equals("768") *
-    Columns.equals("1024") }
-  (0,0,1024,60) (200,60,20,20) (800,65,104,14) 
+}  ( 0,75,0,400)
 
-{ Modality.equals("US") *
-    Manufacturer.containsIgnoreCase("SIEMENS") *
-    ManufacturerModelName.containsIgnoreCase("ACUSON") *
-    Rows.equals("600") *
-    Columns.equals("800") }
-  (0,0,800,43) (128,56,16,16)
+{
+   Manufacturer.containsIgnoreCase("Philips Medical Systems") 
+  * ManufacturerModelName.containsIgnoreCase("iE33") 
+  * !(ImageType.contains("SECONDARY") + ImageType.contains("DERIVED")) 
+  * Columns.equals("300") *  Rows.equals("400") 
 
-{ Modality.equals("US") *
-    Manufacturer.containsIgnoreCase("SIEMENS") *
-    ManufacturerModelName.containsIgnoreCase("S2000") *
-    Rows.equals("768") *
-    Columns.equals("1024") }
-  (0,0,1024,60)
+}  ( 0,75,0,400)
 
-Acuson
-{ Modality.equals("US") *
-    Manufacturer.containsIgnoreCase("ACUSON") *
-    ManufacturerModelName.containsIgnoreCase("SEQUOIA") *
-    Rows.equals("480") *
-    Columns.equals("640") }
-  (0,0,640,30)
+{
+   Manufacturer.containsIgnoreCase("Philips Medical Systems") 
+  * ManufacturerModelName.containsIgnoreCase("iE33") 
+  * !(ImageType.contains("SECONDARY") + ImageType.contains("DERIVED")) 
+  * Columns.equals("480") *  Rows.equals("640") 
 
-Toshiba Aplio 500
-  { Modality.equals("US") *
-    Manufacturer.containsIgnoreCase("TOSHIBA") *
-    ManufacturerModelName.containsIgnoreCase("A500") *
-    Rows.equals("720") *
-    Columns.equals("960") }
-  (0,0,960,60)
+}  ( 0,75,0,640)
 
-Toshiba Aplio 400
-  { Modality.equals("US") *
-    Manufacturer.containsIgnoreCase("TOSHIBA") *
-    ManufacturerModelName.containsIgnoreCase("A400") *
-    Rows.equals("720") *
-    Columns.equals("960") }
-  (0,0,960,60)
+{
+   Manufacturer.containsIgnoreCase("SIEMENS") 
+  * ManufacturerModelName.containsIgnoreCase("Acuson X300") 
+  * !(ImageType.contains("SECONDARY") + ImageType.contains("DERIVED")) 
+  * Columns.equals("600") *  Rows.equals("800") 
 
-Supersonic Imagine 5A
-  { Modality.equals("US") *
-    Manufacturer.containsIgnoreCase("SuperSonic Imagine SA") *
-    ManufacturerModelName.containsIgnoreCase("Aixplorer") *
-    Rows.equals("1050") *
-    Columns.equals("1400") }
-  (0,0,1400,89)
+}  ( 0,41,0,450)
 
-************** 
-     MRI
-**************
+{
+   Manufacturer.containsIgnoreCase("SIEMENS") 
+  * ManufacturerModelName.containsIgnoreCase("Acuson X300") 
+  * !(ImageType.contains("SECONDARY") + ImageType.contains("DERIVED")) 
+  * Columns.equals("600") *  Rows.equals("800") 
 
-**************
-   CR / DR 
-**************
+}  ( 0,41,0,450)
 
-Canon
-  { Manufacturer.containsIgnoreCase("Canon") * 
-    ManufacturerModelName.containsIgnoreCase("CXDI") * 
-    Rows.equals("2592") }
-  (0,0,2208,80) (0,2512,2208,80)
+{
+   Manufacturer.containsIgnoreCase("GE Vingmed Ultrasound") 
+  * ManufacturerModelName.containsIgnoreCase("Vivid E95") 
+  * !(ImageType.contains("SECONDARY") + ImageType.contains("DERIVED")) 
+  * Columns.equals("903") *  Rows.equals("1236") 
 
-**************
-     NM
-**************
+}  ( 0,45,0,1024)
 
-SIEMENS
-  { ImageType.containsIgnoreCase("SECONDARY") * 
-    Modality.containsIgnoreCase("NM") * 
-    Manufacturer.containsIgnoreCase("SIEMENS") * 
-    Rows.equals("860") }
-  (0,0,1132,90) (0,780,1132,80)
+{
+   Manufacturer.containsIgnoreCase("GE Vingmed Ultrasound") 
+  * ManufacturerModelName.containsIgnoreCase("Vivid E95") 
+  * !(ImageType.contains("SECONDARY") + ImageType.contains("DERIVED")) 
+  * Columns.equals("708") *  Rows.equals("1016") 
 
-  { ImageType.containsIgnoreCase("SECONDARY") *
-    Modality.containsIgnoreCase("NM") *
-    Manufacturer.containsIgnoreCase("SIEMENS") *
-    Rows.equals("865") }
-  (0,0,1132,35)
+}  ( 0,45,0,1016)
 
-  { ImageType.containsIgnoreCase("SECONDARY") *
-    Modality.containsIgnoreCase("NM") *
-    Manufacturer.containsIgnoreCase("SIEMENS") *
-    Rows.equals("882") }
-  (0,0,1132,65)
+{
+   Manufacturer.containsIgnoreCase("GE Vingmed Ultrasound") 
+  * ManufacturerModelName.containsIgnoreCase("Vivid E95") 
+  * !(ImageType.contains("SECONDARY") + ImageType.contains("DERIVED")) 
+  * Columns.equals("758") *  Rows.equals("1016") 
 
-**************
-    OTHER
-**************
+}  ( 0,45,0,1016)
 
-ADAC
-  { Manufacturer.containsIgnoreCase("ADAC") *
-    Rows.equals("832") *
-    Columns.equals("1024") }
-  (0,0,1024,80) (0,762,1024,80)
+{
+   Manufacturer.containsIgnoreCase("GE Vingmed Ultrasound") 
+  * ManufacturerModelName.containsIgnoreCase("Vivid E9") 
+  * !(ImageType.contains("SECONDARY") + ImageType.contains("DERIVED")) 
+  * Columns.equals("708") *  Rows.equals("1016") 
 
-  { Manufacturer.containsIgnoreCase("ADAC") *
-    Rows.equals("832") *
-    Columns.equals("1024") *
-    [0018,1030].containsIgnoreCase("DUAL DETEC") }
-  (0,0,1024,130) (0,762,1024,80)
- 
-MEDRAD Injection Profile
-  { SeriesDescription.containsIgnoreCase("MEDRAD") *
-    Rows.equals("1077") *
-    Columns.equals("750") }
-  (0,0,750,230)
+}  ( 0,50,0,1016)
+
+{
+   Manufacturer.containsIgnoreCase("GE Vingmed Ultrasound") 
+  * ManufacturerModelName.containsIgnoreCase("Vivid E9") 
+  * !(ImageType.contains("SECONDARY") + ImageType.contains("DERIVED")) 
+  * Columns.equals("434") *  Rows.equals("636") 
+
+}  ( 0,50,0,600)
+
+{
+   Manufacturer.containsIgnoreCase("GE Vingmed Ultrasound") 
+  * ManufacturerModelName.containsIgnoreCase("Vivid E9") 
+  * !(ImageType.contains("SECONDARY") + ImageType.contains("DERIVED")) 
+  * Columns.equals("484") *  Rows.equals("636") 
+
+}  ( 0,50,0,600)
+
+{
+   Manufacturer.containsIgnoreCase("GE Vingmed Ultrasound") 
+  * ManufacturerModelName.containsIgnoreCase("Vivid7") 
+  * !(ImageType.contains("SECONDARY") + ImageType.contains("DERIVED")) 
+  * Columns.equals("434") *  Rows.equals("636") 
+
+}  ( 0,25,0,247)
+
+{
+   Manufacturer.containsIgnoreCase("GE MEDICAL SYSTEMS") 
+  * ManufacturerModelName.containsIgnoreCase("LightSpeed VCT") 
+  * !(ImageType.contains("SECONDARY") + ImageType.contains("DERIVED")) 
+  * Columns.equals("794") *  Rows.equals("888") 
+
+}  ( 0,70,300,800)
+
+{
+   Manufacturer.containsIgnoreCase("GE MEDICAL SYSTEMS") 
+  * ManufacturerModelName.containsIgnoreCase("LightSpeed VCT") 
+  * !(ImageType.contains("SECONDARY") + ImageType.contains("DERIVED")) 
+  * Columns.equals("1064") *  Rows.equals("888") 
+
+}  ( 0,70,300,800)
+
+{
+   Manufacturer.containsIgnoreCase("GE MEDICAL SYSTEMS") 
+  * ManufacturerModelName.containsIgnoreCase("LightSpeed VCT") 
+  * !(ImageType.contains("SECONDARY") + ImageType.contains("DERIVED")) 
+  * Columns.equals("512") *  Rows.equals("512") 
+
+}  ( 0,70,300,512)
+
+{
+   Manufacturer.containsIgnoreCase("GE MEDICAL SYSTEMS") 
+  * ManufacturerModelName.containsIgnoreCase("LightSpeed VCT") 
+  * !(ImageType.contains("SECONDARY") + ImageType.contains("DERIVED")) 
+  * Columns.equals("789") *  Rows.equals("888") 
+
+}  ( 0,70,300,800)
+
+{
+   Manufacturer.containsIgnoreCase("GE MEDICAL SYSTEMS") 
+  * ManufacturerModelName.containsIgnoreCase("LightSpeed VCT") 
+  * !(ImageType.contains("SECONDARY") + ImageType.contains("DERIVED")) 
+  * Columns.equals("606") *  Rows.equals("888") 
+
+}  ( 0,70,300,800)
+
+{
+   Manufacturer.containsIgnoreCase("GE MEDICAL SYSTEMS") 
+  * ManufacturerModelName.containsIgnoreCase("LightSpeed VCT") 
+  * !(ImageType.contains("SECONDARY") + ImageType.contains("DERIVED")) 
+  * Columns.equals("926") *  Rows.equals("888") 
+
+}  ( 0,70,300,800)
+
+{
+   Manufacturer.containsIgnoreCase("GE MEDICAL SYSTEMS") 
+  * ManufacturerModelName.containsIgnoreCase("LightSpeed VCT") 
+  * !(ImageType.contains("SECONDARY") + ImageType.contains("DERIVED")) 
+  * Columns.equals("551") *  Rows.equals("888") 
+
+}  ( 0,70,300,800)
+
+{
+   Manufacturer.containsIgnoreCase("GE MEDICAL SYSTEMS") 
+  * ManufacturerModelName.containsIgnoreCase("LightSpeed VCT") 
+  * !(ImageType.contains("SECONDARY") + ImageType.contains("DERIVED")) 
+  * Columns.equals("1310") *  Rows.equals("888") 
+
+}  ( 0,70,300,800)
+
+{
+   Manufacturer.containsIgnoreCase("GE MEDICAL SYSTEMS") 
+  * ManufacturerModelName.containsIgnoreCase("LightSpeed VCT") 
+  * !(ImageType.contains("SECONDARY") + ImageType.contains("DERIVED")) 
+  * Columns.equals("642") *  Rows.equals("888") 
+
+}  ( 0,70,300,800)
+
+{
+   Manufacturer.containsIgnoreCase("GE MEDICAL SYSTEMS") 
+  * ManufacturerModelName.containsIgnoreCase("LightSpeed VCT") 
+  * !(ImageType.contains("SECONDARY") + ImageType.contains("DERIVED")) 
+  * Columns.equals("1247") *  Rows.equals("888") 
+
+}  ( 0,70,300,800)
+
+{
+   Manufacturer.containsIgnoreCase("GE MEDICAL SYSTEMS") 
+  * ManufacturerModelName.containsIgnoreCase("LightSpeed VCT") 
+  * !(ImageType.contains("SECONDARY") + ImageType.contains("DERIVED")) 
+  * Columns.equals("1055") *  Rows.equals("888") 
+
+}  ( 0,70,300,800)
+
+{
+   Manufacturer.containsIgnoreCase("GE MEDICAL SYSTEMS") 
+  * ManufacturerModelName.containsIgnoreCase("LightSpeed VCT") 
+  * !(ImageType.contains("SECONDARY") + ImageType.contains("DERIVED")) 
+  * Columns.equals("532") *  Rows.equals("888") 
+
+}  ( 0,70,300,800)
+
+{
+   Manufacturer.containsIgnoreCase("GE MEDICAL SYSTEMS") 
+  * ManufacturerModelName.containsIgnoreCase("LightSpeed VCT") 
+  * !(ImageType.contains("SECONDARY") + ImageType.contains("DERIVED")) 
+  * Columns.equals("844") *  Rows.equals("888") 
+
+}  ( 0,70,300,800)
+
+{
+   Manufacturer.containsIgnoreCase("GE MEDICAL SYSTEMS") 
+  * ManufacturerModelName.containsIgnoreCase("LightSpeed VCT") 
+  * !(ImageType.contains("SECONDARY") + ImageType.contains("DERIVED")) 
+  * Columns.equals("917") *  Rows.equals("888") 
+
+}  ( 0,70,300,800)
+
+{
+   Manufacturer.containsIgnoreCase("GE MEDICAL SYSTEMS") 
+  * ManufacturerModelName.containsIgnoreCase("LightSpeed VCT") 
+  * !(ImageType.contains("SECONDARY") + ImageType.contains("DERIVED")) 
+  * Columns.equals("822") *  Rows.equals("888") 
+
+}  ( 0,70,300,800)
+
+{
+   Manufacturer.containsIgnoreCase("GE MEDICAL SYSTEMS") 
+  * ManufacturerModelName.containsIgnoreCase("LightSpeed VCT") 
+  * !(ImageType.contains("SECONDARY") + ImageType.contains("DERIVED")) 
+  * Columns.equals("1121") *  Rows.equals("888") 
+
+}  ( 0,70,300,800)
+
+{
+   Manufacturer.containsIgnoreCase("GE MEDICAL SYSTEMS") 
+  * ManufacturerModelName.containsIgnoreCase("LightSpeed VCT") 
+  * !(ImageType.contains("SECONDARY") + ImageType.contains("DERIVED")) 
+  * Columns.equals("915") *  Rows.equals("888") 
+
+}  ( 0,70,300,800)
+
+{
+   Manufacturer.containsIgnoreCase("GE MEDICAL SYSTEMS") 
+  * ManufacturerModelName.containsIgnoreCase("LightSpeed VCT") 
+  * !(ImageType.contains("SECONDARY") + ImageType.contains("DERIVED")) 
+  * Columns.equals("624") *  Rows.equals("888") 
+
+}  ( 0,70,300,800)
+
+{
+   Manufacturer.containsIgnoreCase("GE MEDICAL SYSTEMS") 
+  * ManufacturerModelName.containsIgnoreCase("LightSpeed VCT") 
+  * !(ImageType.contains("SECONDARY") + ImageType.contains("DERIVED")) 
+  * Columns.equals("550") *  Rows.equals("888") 
+
+}  ( 0,70,300,800)
+
+{
+   Manufacturer.containsIgnoreCase("GE MEDICAL SYSTEMS") 
+  * ManufacturerModelName.containsIgnoreCase("LightSpeed VCT") 
+  * !(ImageType.contains("SECONDARY") + ImageType.contains("DERIVED")) 
+  * Columns.equals("826") *  Rows.equals("888") 
+
+}  ( 0,70,300,512)
+
+{
+   Manufacturer.containsIgnoreCase("GE MEDICAL SYSTEMS") 
+  * ManufacturerModelName.containsIgnoreCase("LightSpeed VCT") 
+  * !(ImageType.contains("SECONDARY") + ImageType.contains("DERIVED")) 
+  * Columns.equals("734") *  Rows.equals("888") 
+
+}  ( 0,70,300,512)
+
+{
+   Manufacturer.containsIgnoreCase("GE MEDICAL SYSTEMS") 
+  * ManufacturerModelName.containsIgnoreCase("LightSpeed VCT") 
+  * !(ImageType.contains("SECONDARY") + ImageType.contains("DERIVED")) 
+  * Columns.equals("1101") *  Rows.equals("888") 
+
+}  ( 0,70,300,800)
+
+{
+   Manufacturer.containsIgnoreCase("GE MEDICAL SYSTEMS") 
+  * ManufacturerModelName.containsIgnoreCase("LightSpeed VCT") 
+  * !(ImageType.contains("SECONDARY") + ImageType.contains("DERIVED")) 
+  * Columns.equals("2091") *  Rows.equals("888") 
+
+}  ( 0,70,300,800)
+
+{
+   Manufacturer.containsIgnoreCase("GE MEDICAL SYSTEMS") 
+  * ManufacturerModelName.containsIgnoreCase("LightSpeed VCT") 
+  * !(ImageType.contains("SECONDARY") + ImageType.contains("DERIVED")) 
+  * Columns.equals("670") *  Rows.equals("888") 
+
+}  ( 0,70,300,800)
+
+{
+   Manufacturer.containsIgnoreCase("GE MEDICAL SYSTEMS") 
+  * ManufacturerModelName.containsIgnoreCase("LightSpeed VCT") 
+  * !(ImageType.contains("SECONDARY") + ImageType.contains("DERIVED")) 
+  * Columns.equals("1266") *  Rows.equals("888") 
+
+}  ( 0,70,300,800)
+
+{
+   Manufacturer.containsIgnoreCase("GE MEDICAL SYSTEMS") 
+  * ManufacturerModelName.containsIgnoreCase("LightSpeed VCT") 
+  * !(ImageType.contains("SECONDARY") + ImageType.contains("DERIVED")) 
+  * Columns.equals("835") *  Rows.equals("888") 
+
+}  ( 0,70,300,800)
+
+{
+   Manufacturer.containsIgnoreCase("GE MEDICAL SYSTEMS") 
+  * ManufacturerModelName.containsIgnoreCase("LightSpeed VCT") 
+  * !(ImageType.contains("SECONDARY") + ImageType.contains("DERIVED")) 
+  * Columns.equals("1063") *  Rows.equals("888") 
+
+}  ( 0,70,300,800)
+
+{
+   Manufacturer.containsIgnoreCase("GE MEDICAL SYSTEMS") 
+  * ManufacturerModelName.containsIgnoreCase("LightSpeed VCT") 
+  * !(ImageType.contains("SECONDARY") + ImageType.contains("DERIVED")) 
+  * Columns.equals("2653") *  Rows.equals("888") 
+
+}  ( 0,70,300,800)
+
+{
+   Manufacturer.containsIgnoreCase("GE MEDICAL SYSTEMS") 
+  * ManufacturerModelName.containsIgnoreCase("LightSpeed VCT") 
+  * !(ImageType.contains("SECONDARY") + ImageType.contains("DERIVED")) 
+  * Columns.equals("862") *  Rows.equals("888") 
+
+}  ( 0,70,300,800)
+
+{
+   Manufacturer.containsIgnoreCase("GE MEDICAL SYSTEMS") 
+  * ManufacturerModelName.containsIgnoreCase("LightSpeed VCT") 
+  * !(ImageType.contains("SECONDARY") + ImageType.contains("DERIVED")) 
+  * Columns.equals("972") *  Rows.equals("888") 
+
+}  ( 0,70,300,800)
+
+{
+   Manufacturer.containsIgnoreCase("GE MEDICAL SYSTEMS") 
+  * ManufacturerModelName.containsIgnoreCase("LightSpeed VCT") 
+  * !(ImageType.contains("SECONDARY") + ImageType.contains("DERIVED")) 
+  * Columns.equals("1009") *  Rows.equals("888") 
+
+}  ( 0,70,300,800)
+
+{
+   Manufacturer.containsIgnoreCase("GE MEDICAL SYSTEMS") 
+  * ManufacturerModelName.containsIgnoreCase("LightSpeed VCT") 
+  * !(ImageType.contains("SECONDARY") + ImageType.contains("DERIVED")) 
+  * Columns.equals("899") *  Rows.equals("888") 
+
+}  ( 0,70,300,800)
+
+{
+   Manufacturer.containsIgnoreCase("GE MEDICAL SYSTEMS") 
+  * ManufacturerModelName.containsIgnoreCase("LightSpeed VCT") 
+  * !(ImageType.contains("SECONDARY") + ImageType.contains("DERIVED")) 
+  * Columns.equals("1026") *  Rows.equals("888") 
+
+}  ( 0,70,300,800)
+
+{
+   Manufacturer.containsIgnoreCase("GE MEDICAL SYSTEMS") 
+  * ManufacturerModelName.containsIgnoreCase("LightSpeed VCT") 
+  * !(ImageType.contains("SECONDARY") + ImageType.contains("DERIVED")) 
+  * Columns.equals("888") *  Rows.equals("733") 
+
+}  ( 0,70,300,512)
+
+{
+   Manufacturer.containsIgnoreCase("GE MEDICAL SYSTEMS") 
+  * ManufacturerModelName.containsIgnoreCase("LightSpeed VCT") 
+  * !(ImageType.contains("SECONDARY") + ImageType.contains("DERIVED")) 
+  * Columns.equals("495") *  Rows.equals("888") 
+
+}  ( 0,70,300,800)
+
+{
+   Manufacturer.containsIgnoreCase("GE MEDICAL SYSTEMS") 
+  * ManufacturerModelName.containsIgnoreCase("LightSpeed VCT") 
+  * !(ImageType.contains("SECONDARY") + ImageType.contains("DERIVED")) 
+  * Columns.equals("752") *  Rows.equals("888") 
+
+}  ( 0,70,300,800)
+
+{
+   Manufacturer.containsIgnoreCase("GE MEDICAL SYSTEMS") 
+  * ManufacturerModelName.containsIgnoreCase("LightSpeed VCT") 
+  * !(ImageType.contains("SECONDARY") + ImageType.contains("DERIVED")) 
+  * Columns.equals("1312") *  Rows.equals("888") 
+
+}  ( 0,70,300,800)
+
+{
+   Manufacturer.containsIgnoreCase("GE MEDICAL SYSTEMS") 
+  * ManufacturerModelName.containsIgnoreCase("LightSpeed VCT") 
+  * !(ImageType.contains("SECONDARY") + ImageType.contains("DERIVED")) 
+  * Columns.equals("990") *  Rows.equals("888") 
+
+}  ( 0,70,300,800)
+
+{
+   Manufacturer.containsIgnoreCase("GE MEDICAL SYSTEMS") 
+  * ManufacturerModelName.containsIgnoreCase("LightSpeed VCT") 
+  * !(ImageType.contains("SECONDARY") + ImageType.contains("DERIVED")) 
+  * Columns.equals("916") *  Rows.equals("888") 
+
+}  ( 0,70,300,800)
+
+{
+   Manufacturer.containsIgnoreCase("GE MEDICAL SYSTEMS") 
+  * ManufacturerModelName.containsIgnoreCase("LightSpeed VCT") 
+  * !(ImageType.contains("SECONDARY") + ImageType.contains("DERIVED")) 
+  * Columns.equals("715") *  Rows.equals("888") 
+
+}  ( 0,70,300,800)
+
+{
+   Manufacturer.containsIgnoreCase("GE MEDICAL SYSTEMS") 
+  * ManufacturerModelName.containsIgnoreCase("LightSpeed VCT") 
+  * !(ImageType.contains("SECONDARY") + ImageType.contains("DERIVED")) 
+  * Columns.equals("716") *  Rows.equals("888") 
+
+}  ( 0,70,300,800)
+
+{
+   Manufacturer.containsIgnoreCase("GE MEDICAL SYSTEMS") 
+  * ManufacturerModelName.containsIgnoreCase("LightSpeed VCT") 
+  * !(ImageType.contains("SECONDARY") + ImageType.contains("DERIVED")) 
+  * Columns.equals("963") *  Rows.equals("888") 
+
+}  ( 0,70,300,800)
+
+{
+   Manufacturer.containsIgnoreCase("GE MEDICAL SYSTEMS") 
+  * ManufacturerModelName.containsIgnoreCase("LightSpeed VCT") 
+  * !(ImageType.contains("SECONDARY") + ImageType.contains("DERIVED")) 
+  * Columns.equals("2273") *  Rows.equals("888") 
+
+}  ( 0,70,300,800)
+
+{
+   Manufacturer.containsIgnoreCase("GE MEDICAL SYSTEMS") 
+  * ManufacturerModelName.containsIgnoreCase("LightSpeed VCT") 
+  * !(ImageType.contains("SECONDARY") + ImageType.contains("DERIVED")) 
+  * Columns.equals("697") *  Rows.equals("888") 
+
+}  ( 0,70,300,800)
+
+{
+   Manufacturer.containsIgnoreCase("GE MEDICAL SYSTEMS") 
+  * ManufacturerModelName.containsIgnoreCase("LightSpeed VCT") 
+  * !(ImageType.contains("SECONDARY") + ImageType.contains("DERIVED")) 
+  * Columns.equals("733") *  Rows.equals("888") 
+
+}  ( 0,70,300,512)
+
+{
+   Manufacturer.containsIgnoreCase("GE MEDICAL SYSTEMS") 
+  * ManufacturerModelName.containsIgnoreCase("LightSpeed VCT") 
+  * !(ImageType.contains("SECONDARY") + ImageType.contains("DERIVED")) 
+  * Columns.equals("1082") *  Rows.equals("888") 
+
+}  ( 0,70,300,800)
+
+{
+   Manufacturer.containsIgnoreCase("GE MEDICAL SYSTEMS") 
+  * ManufacturerModelName.containsIgnoreCase("LightSpeed VCT") 
+  * !(ImageType.contains("SECONDARY") + ImageType.contains("DERIVED")) 
+  * Columns.equals("1357") *  Rows.equals("888") 
+
+}  ( 0,70,300,800)
+
+{
+   Manufacturer.containsIgnoreCase("GE Healthcare") 
+  * ManufacturerModelName.containsIgnoreCase("LOGIQE9") 
+  * !(ImageType.contains("SECONDARY") + ImageType.contains("DERIVED")) 
+  * Columns.equals("649") *  Rows.equals("138") 
+
+}  ( 0,55,0,649)
+
+{
+   Manufacturer.containsIgnoreCase("GE Healthcare") 
+  * ManufacturerModelName.containsIgnoreCase("LOGIQE9") 
+  * !(ImageType.contains("SECONDARY") + ImageType.contains("DERIVED")) 
+  * Columns.equals("155") *  Rows.equals("649") 
+
+}  ( 0,55,0,640)
+
+{
+   Manufacturer.containsIgnoreCase("GE Healthcare") 
+  * ManufacturerModelName.containsIgnoreCase("LOGIQE9") 
+  * !(ImageType.contains("SECONDARY") + ImageType.contains("DERIVED")) 
+  * Columns.equals("512") *  Rows.equals("512") 
+
+}  ( 0,55,0,640)
+
+{
+   Manufacturer.containsIgnoreCase("GE Healthcare") 
+  * ManufacturerModelName.containsIgnoreCase("LOGIQE9") 
+  * !(ImageType.contains("SECONDARY") + ImageType.contains("DERIVED")) 
+  * Columns.equals("720") *  Rows.equals("960") 
+
+}  ( 0,55,0,649)
+
+{
+   Manufacturer.containsIgnoreCase("GE Healthcare") 
+  * ManufacturerModelName.containsIgnoreCase("LOGIQE9") 
+  * !(ImageType.contains("SECONDARY") + ImageType.contains("DERIVED")) 
+  * Columns.equals("532") *  Rows.equals("434") 
+
+}  ( 0,55,0,640)
+
+{
+   Manufacturer.containsIgnoreCase("GE Healthcare") 
+  * ManufacturerModelName.containsIgnoreCase("LOGIQE9") 
+  * !(ImageType.contains("SECONDARY") + ImageType.contains("DERIVED")) 
+  * Columns.equals("531") *  Rows.equals("888") 
+
+}  ( 0,55,0,640)
+
+{
+   Manufacturer.containsIgnoreCase("GE Healthcare") 
+  * ManufacturerModelName.containsIgnoreCase("LOGIQE9") 
+  * !(ImageType.contains("SECONDARY") + ImageType.contains("DERIVED")) 
+  * Columns.equals("649") *  Rows.equals("122") 
+
+}  ( 0,55,0,649)
+
+{
+   Manufacturer.containsIgnoreCase("GE Healthcare") 
+  * ManufacturerModelName.containsIgnoreCase("LOGIQE9") 
+  * !(ImageType.contains("SECONDARY") + ImageType.contains("DERIVED")) 
+  * Columns.equals("590") *  Rows.equals("819") 
+
+}  ( 0,55,0,640)
+
+{
+   Manufacturer.containsIgnoreCase("GE Healthcare") 
+  * ManufacturerModelName.containsIgnoreCase("LOGIQE9") 
+  * !(ImageType.contains("SECONDARY") + ImageType.contains("DERIVED")) 
+  * Columns.equals("1054") *  Rows.equals("802") 
+
+}  ( 0,55,0,800)
+
+{
+   Manufacturer.containsIgnoreCase("GE Healthcare") 
+  * ManufacturerModelName.containsIgnoreCase("LOGIQE9") 
+  * !(ImageType.contains("SECONDARY") + ImageType.contains("DERIVED")) 
+  * Columns.equals("552") *  Rows.equals("421") 
+
+}  ( 0,55,0,640)
+
+{
+   Manufacturer.containsIgnoreCase("GE Healthcare") 
+  * ManufacturerModelName.containsIgnoreCase("LOGIQE9") 
+  * !(ImageType.contains("SECONDARY") + ImageType.contains("DERIVED")) 
+  * Columns.equals("238") *  Rows.equals("649") 
+
+}  ( 0,55,0,640)
+
+{
+   Manufacturer.containsIgnoreCase("GE Healthcare") 
+  * ManufacturerModelName.containsIgnoreCase("LOGIQE9") 
+  * !(ImageType.contains("SECONDARY") + ImageType.contains("DERIVED")) 
+  * Columns.equals("270") *  Rows.equals("649") 
+
+}  ( 0,55,0,640)
+
+{
+   Manufacturer.containsIgnoreCase("GE Healthcare") 
+  * ManufacturerModelName.containsIgnoreCase("LOGIQE9") 
+  * !(ImageType.contains("SECONDARY") + ImageType.contains("DERIVED")) 
+  * Columns.equals("212") *  Rows.equals("649") 
+
+}  ( 0,55,0,640)
+
+{
+   Manufacturer.containsIgnoreCase("GE Healthcare") 
+  * ManufacturerModelName.containsIgnoreCase("LOGIQE9") 
+  * !(ImageType.contains("SECONDARY") + ImageType.contains("DERIVED")) 
+  * Columns.equals("421") *  Rows.equals("552") 
+
+}  ( 0,55,0,640)
+
+{
+   Manufacturer.containsIgnoreCase("GE Healthcare") 
+  * ManufacturerModelName.containsIgnoreCase("LOGIQE9") 
+  * !(ImageType.contains("SECONDARY") + ImageType.contains("DERIVED")) 
+  * Columns.equals("649") *  Rows.equals("850") 
+
+}  ( 0,55,0,640)
+
+{
+   Manufacturer.containsIgnoreCase("GE Healthcare") 
+  * ManufacturerModelName.containsIgnoreCase("LOGIQE9") 
+  * !(ImageType.contains("SECONDARY") + ImageType.contains("DERIVED")) 
+  * Columns.equals("873") *  Rows.equals("1164") 
+
+}  ( 0,55,0,1164)
+
+{
+   Manufacturer.containsIgnoreCase("GE Healthcare") 
+  * ManufacturerModelName.containsIgnoreCase("LOGIQE9") 
+  * !(ImageType.contains("SECONDARY") + ImageType.contains("DERIVED")) 
+  * Columns.equals("768") *  Rows.equals("1024") 
+
+}  ( 0,55,0,1024)
+
+{
+   Manufacturer.containsIgnoreCase("GE Healthcare") 
+  * ManufacturerModelName.containsIgnoreCase("LOGIQE9") 
+  * !(ImageType.contains("SECONDARY") + ImageType.contains("DERIVED")) 
+  * Columns.equals("720") *  Rows.equals("1280") 
+
+}  ( 0,55,0,900)
+
+{
+   Manufacturer.containsIgnoreCase("GE Healthcare") 
+  * ManufacturerModelName.containsIgnoreCase("LOGIQE9") 
+  * !(ImageType.contains("SECONDARY") + ImageType.contains("DERIVED")) 
+  * Columns.equals("614") *  Rows.equals("820") 
+
+}  ( 0,55,0,640)
+
+{
+   Manufacturer.containsIgnoreCase("GE Healthcare") 
+  * ManufacturerModelName.containsIgnoreCase("LOGIQE9") 
+  * !(ImageType.contains("SECONDARY") + ImageType.contains("DERIVED")) 
+  * Columns.equals("802") *  Rows.equals("1054") 
+
+}  ( 0,55,0,1054)
+
+{
+   Manufacturer.containsIgnoreCase("GE Healthcare") 
+  * ManufacturerModelName.containsIgnoreCase("LOGIQE9") 
+  * !(ImageType.contains("SECONDARY") + ImageType.contains("DERIVED")) 
+  * Columns.equals("850") *  Rows.equals("649") 
+
+}  ( 0,26,0,550)
+
+{
+   Manufacturer.containsIgnoreCase("GE Healthcare") 
+  * ManufacturerModelName.containsIgnoreCase("LOGIQE9") 
+  * !(ImageType.contains("SECONDARY") + ImageType.contains("DERIVED")) 
+  * Columns.equals("649") *  Rows.equals("150") 
+
+}  ( 0,55,0,649)
+
+{
+   Manufacturer.containsIgnoreCase("GE Healthcare") 
+  * ManufacturerModelName.containsIgnoreCase("LOGIQE9") 
+  * !(ImageType.contains("SECONDARY") + ImageType.contains("DERIVED")) 
+  * Columns.equals("970") *  Rows.equals("1552") 
+
+}  ( 0,55,0,1552)
+
+{
+   Manufacturer.containsIgnoreCase("GE Healthcare") 
+  * ManufacturerModelName.containsIgnoreCase("LOGIQE9") 
+  * !(ImageType.contains("SECONDARY") + ImageType.contains("DERIVED")) 
+  * Columns.equals("649") *  Rows.equals("173") 
+
+}  ( 0,55,0,649)
+
+{
+   Manufacturer.containsIgnoreCase("GE MEDICAL SYSTEMS") 
+  * ManufacturerModelName.containsIgnoreCase("LOGIQ9") 
+  * !(ImageType.contains("SECONDARY") + ImageType.contains("DERIVED")) 
+  * Columns.equals("768") *  Rows.equals("1024") 
+
+}  ( 0,50,0,700)
+
+{
+   Manufacturer.containsIgnoreCase("GE MEDICAL SYSTEMS") 
+  * ManufacturerModelName.containsIgnoreCase("LOGIQ9") 
+  * !(ImageType.contains("SECONDARY") + ImageType.contains("DERIVED")) 
+  * Columns.equals("434") *  Rows.equals("532") 
+
+}  ( 0,50,0,532)
+
+{
+   Manufacturer.containsIgnoreCase("GE Medical Systems") 
+  * ManufacturerModelName.containsIgnoreCase("LOGIQ9") 
+  * !(ImageType.contains("SECONDARY") + ImageType.contains("DERIVED")) 
+  * Columns.equals("158") *  Rows.equals("434") 
+
+}  ( 0,55,0,540)
+
+{
+   Manufacturer.containsIgnoreCase("GE Medical Systems") 
+  * ManufacturerModelName.containsIgnoreCase("LOGIQ9") 
+  * !(ImageType.contains("SECONDARY") + ImageType.contains("DERIVED")) 
+  * Columns.equals("434") *  Rows.equals("155") 
+
+}  ( 0,55,5,155)
+
+{
+   Manufacturer.containsIgnoreCase("GE Medical Systems") 
+  * ManufacturerModelName.containsIgnoreCase("LOGIQ9") 
+  * !(ImageType.contains("SECONDARY") + ImageType.contains("DERIVED")) 
+  * Columns.equals("434") *  Rows.equals("150") 
+
+}  ( 0,55,5,150)
+
+{
+   Manufacturer.containsIgnoreCase("GE Medical Systems") 
+  * ManufacturerModelName.containsIgnoreCase("LOGIQ9") 
+  * !(ImageType.contains("SECONDARY") + ImageType.contains("DERIVED")) 
+  * Columns.equals("434") *  Rows.equals("158") 
+
+}  ( 0,55,5,158)
+
+{
+   Manufacturer.containsIgnoreCase("GE Medical Systems") 
+  * ManufacturerModelName.containsIgnoreCase("LOGIQ9") 
+  * !(ImageType.contains("SECONDARY") + ImageType.contains("DERIVED")) 
+  * Columns.equals("434") *  Rows.equals("115") 
+
+}  ( 0,55,0,115)
+
+{
+   Manufacturer.containsIgnoreCase("GE Medical Systems") 
+  * ManufacturerModelName.containsIgnoreCase("LOGIQ9") 
+  * !(ImageType.contains("SECONDARY") + ImageType.contains("DERIVED")) 
+  * Columns.equals("203") *  Rows.equals("434") 
+
+}  ( 0,55,0,540)
+
+{
+   Manufacturer.containsIgnoreCase("GE Medical Systems") 
+  * ManufacturerModelName.containsIgnoreCase("LOGIQ9") 
+  * !(ImageType.contains("SECONDARY") + ImageType.contains("DERIVED")) 
+  * Columns.equals("532") *  Rows.equals("434") 
+
+}  ( 0,55,5,432)
+
+{
+   Manufacturer.containsIgnoreCase("GE Medical Systems") 
+  * ManufacturerModelName.containsIgnoreCase("LOGIQ9") 
+  * !(ImageType.contains("SECONDARY") + ImageType.contains("DERIVED")) 
+  * Columns.equals("434") *  Rows.equals("126") 
+
+}  ( 0,55,5,126)
+
+{
+   Manufacturer.containsIgnoreCase("GE Medical Systems") 
+  * ManufacturerModelName.containsIgnoreCase("LOGIQ9") 
+  * !(ImageType.contains("SECONDARY") + ImageType.contains("DERIVED")) 
+  * Columns.equals("768") *  Rows.equals("1024") 
+
+}  ( 0,55,0,700)
+
+{
+   Manufacturer.containsIgnoreCase("GE Medical Systems") 
+  * ManufacturerModelName.containsIgnoreCase("LOGIQ9") 
+  * !(ImageType.contains("SECONDARY") + ImageType.contains("DERIVED")) 
+  * Columns.equals("640") *  Rows.equals("480") 
+
+}  ( 0,55,0,440)
+
+{
+   Manufacturer.containsIgnoreCase("GE Medical Systems") 
+  * ManufacturerModelName.containsIgnoreCase("LOGIQ9") 
+  * !(ImageType.contains("SECONDARY") + ImageType.contains("DERIVED")) 
+  * Columns.equals("480") *  Rows.equals("640") 
+
+}  ( 0,55,0,440)
+
+{
+   Manufacturer.containsIgnoreCase("GE Medical Systems") 
+  * ManufacturerModelName.containsIgnoreCase("LOGIQ9") 
+  * !(ImageType.contains("SECONDARY") + ImageType.contains("DERIVED")) 
+  * Columns.equals("434") *  Rows.equals("171") 
+
+}  ( 0,55,5,171)
+
+{
+   Manufacturer.containsIgnoreCase("G.E. Medical Systems") 
+  * ManufacturerModelName.containsIgnoreCase("LOGIQ 700") 
+  * !(ImageType.contains("SECONDARY") + ImageType.contains("DERIVED")) 
+  * Columns.equals("640") *  Rows.equals("480") 
+
+}  ( 0,40,0,330)
+
+{
+   Manufacturer.containsIgnoreCase("GE Healthcare") 
+  * ManufacturerModelName.containsIgnoreCase("LOGIQS8") 
+  * !(ImageType.contains("SECONDARY") + ImageType.contains("DERIVED")) 
+  * Columns.equals("720") *  Rows.equals("960") 
+
+}  ( 0,65,0,960)
+
+{
+   Manufacturer.containsIgnoreCase("GE Healthcare") 
+  * ManufacturerModelName.containsIgnoreCase("LOGIQS8") 
+  * !(ImageType.contains("SECONDARY") + ImageType.contains("DERIVED")) 
+  * Columns.equals("768") *  Rows.equals("1024") 
+
+}  ( 0,65,0,665)
+
+{
+   Manufacturer.containsIgnoreCase("GE Healthcare") 
+  * ManufacturerModelName.containsIgnoreCase("LOGIQS8") 
+  * !(ImageType.contains("SECONDARY") + ImageType.contains("DERIVED")) 
+  * Columns.equals("720") *  Rows.equals("1280") 
+
+}  ( 0,65,0,665)
+
+{
+   Manufacturer.containsIgnoreCase("GE Healthcare") 
+  * ManufacturerModelName.containsIgnoreCase("LOGIQS8") 
+  * !(ImageType.contains("SECONDARY") + ImageType.contains("DERIVED")) 
+  * Columns.equals("819") *  Rows.equals("1092") 
+
+}  ( 0,65,0,747)
+
+{
+   Manufacturer.containsIgnoreCase("GE Healthcare") 
+  * ManufacturerModelName.containsIgnoreCase("LOGIQS8") 
+  * !(ImageType.contains("SECONDARY") + ImageType.contains("DERIVED")) 
+  * Columns.equals("1092") *  Rows.equals("819") 
+
+}  ( 0,65,0,819)
+
+{
+   Manufacturer.containsIgnoreCase("GE Healthcare") 
+  * ManufacturerModelName.containsIgnoreCase("LOGIQS8") 
+  * !(ImageType.contains("SECONDARY") + ImageType.contains("DERIVED")) 
+  * Columns.equals("960") *  Rows.equals("720") 
+
+}  ( 0,65,0,720)
+
+{
+   Manufacturer.containsIgnoreCase("GE Healthcare") 
+  * ManufacturerModelName.containsIgnoreCase("LOGIQS8") 
+  * !(ImageType.contains("SECONDARY") + ImageType.contains("DERIVED")) 
+  * Columns.equals("850") *  Rows.equals("649") 
+
+}  ( 0,65,0,665)
+
+{
+   Manufacturer.containsIgnoreCase("Philips Medical Systems") 
+  * ManufacturerModelName.containsIgnoreCase("EPIQ 7W") 
+  * !(ImageType.contains("SECONDARY") + ImageType.contains("DERIVED")) 
+  * Columns.equals("600") *  Rows.equals("161") 
+
+}  ( 0,20,0,400)
+
+{
+   Manufacturer.containsIgnoreCase("Philips Medical Systems") 
+  * ManufacturerModelName.containsIgnoreCase("EPIQ 7W") 
+  * !(ImageType.contains("SECONDARY") + ImageType.contains("DERIVED")) 
+  * Columns.equals("600") *  Rows.equals("90") 
+
+}  ( 0,20,0,400)
+
+{
+   Manufacturer.containsIgnoreCase("Philips Medical Systems") 
+  * ManufacturerModelName.containsIgnoreCase("EPIQ 7W") 
+  * !(ImageType.contains("SECONDARY") + ImageType.contains("DERIVED")) 
+  * Columns.equals("600") *  Rows.equals("91") 
+
+}  ( 0,20,0,400)
+
+{
+   Manufacturer.containsIgnoreCase("Philips Medical Systems") 
+  * ManufacturerModelName.containsIgnoreCase("EPIQ 7W") 
+  * !(ImageType.contains("SECONDARY") + ImageType.contains("DERIVED")) 
+  * Columns.equals("820") *  Rows.equals("1036") 
+
+}  ( 0,20,0,400)
+
+{
+   Manufacturer.containsIgnoreCase("Philips Medical Systems") 
+  * ManufacturerModelName.containsIgnoreCase("EPIQ 7W") 
+  * !(ImageType.contains("SECONDARY") + ImageType.contains("DERIVED")) 
+  * Columns.equals("600") *  Rows.equals("81") 
+
+}  ( 0,20,0,400)
+
+{
+   Manufacturer.containsIgnoreCase("Philips Medical Systems") 
+  * ManufacturerModelName.containsIgnoreCase("EPIQ 7W") 
+  * !(ImageType.contains("SECONDARY") + ImageType.contains("DERIVED")) 
+  * Columns.equals("1036") *  Rows.equals("820") 
+
+}  ( 0,20,0,400)
+
+{
+   Manufacturer.containsIgnoreCase("Philips Medical Systems") 
+  * ManufacturerModelName.containsIgnoreCase("EPIQ 7W") 
+  * !(ImageType.contains("SECONDARY") + ImageType.contains("DERIVED")) 
+  * Columns.equals("600") *  Rows.equals("293") 
+
+}  ( 0,20,0,400)
+
+{
+   Manufacturer.containsIgnoreCase("Philips Medical Systems") 
+  * ManufacturerModelName.containsIgnoreCase("EPIQ 7W") 
+  * !(ImageType.contains("SECONDARY") + ImageType.contains("DERIVED")) 
+  * Columns.equals("600") *  Rows.equals("800") 
+
+}  ( 0,20,0,400)
+
+{
+   Manufacturer.containsIgnoreCase("Philips Medical Systems") 
+  * ManufacturerModelName.containsIgnoreCase("EPIQ 7W") 
+  * !(ImageType.contains("SECONDARY") + ImageType.contains("DERIVED")) 
+  * Columns.equals("1024") *  Rows.equals("768") 
+
+}  ( 0,20,0,400)
+
+{
+   Manufacturer.containsIgnoreCase("Philips Medical Systems") 
+  * ManufacturerModelName.containsIgnoreCase("EPIQ 7W") 
+  * !(ImageType.contains("SECONDARY") + ImageType.contains("DERIVED")) 
+  * Columns.equals("768") *  Rows.equals("1024") 
+
+}  ( 0,20,0,400)
+
+{
+   Manufacturer.containsIgnoreCase("Philips Medical Systems") 
+  * ManufacturerModelName.containsIgnoreCase("EPIQ 7W") 
+  * !(ImageType.contains("SECONDARY") + ImageType.contains("DERIVED")) 
+  * Columns.equals("600") *  Rows.equals("186") 
+
+}  ( 0,20,0,400)
+
+{
+   Manufacturer.containsIgnoreCase("Philips Medical Systems") 
+  * ManufacturerModelName.containsIgnoreCase("EPIQ 7W") 
+  * !(ImageType.contains("SECONDARY") + ImageType.contains("DERIVED")) 
+  * Columns.equals("600") *  Rows.equals("76") 
+
+}  ( 0,20,0,400)
+
+{
+   Manufacturer.containsIgnoreCase("Philips Medical Systems") 
+  * ManufacturerModelName.containsIgnoreCase("EPIQ 7W") 
+  * !(ImageType.contains("SECONDARY") + ImageType.contains("DERIVED")) 
+  * Columns.equals("600") *  Rows.equals("77") 
+
+}  ( 0,20,0,400)
+
+{
+   Manufacturer.containsIgnoreCase("Philips Medical Systems") 
+  * ManufacturerModelName.containsIgnoreCase("EPIQ 7W") 
+  * !(ImageType.contains("SECONDARY") + ImageType.contains("DERIVED")) 
+  * Columns.equals("600") *  Rows.equals("1279") 
+
+}  ( 0,20,0,400)
